@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+python-decouple = "*"
+django-rest-auth = "*"
+django-allauth = "*"
+pusher = "*"
+django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
+django-rest-api = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+whitenoise = "*"
+graphene-django = "*"
+graphene = "*"
+pip = "*"
+
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
