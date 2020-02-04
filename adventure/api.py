@@ -89,7 +89,7 @@ def say(request):
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Room
-        fields = ('title','description')
+        fields = ('title','description',"x","y","n_to","s_to","e_to","w_to")
     def create(self,validate_data):
         user = self.context['request'].user
         rooms = Room.objects.create(**validate_data)

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from adventure.models import Player, Room
 Room.objects.all().delete()
-          # Origin 
+          # Origin
 rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 0, "s" : 0, "e" : 0, "w" : 0,
           "description" : "This is the Origin, You may Travel North, West, East, Or South."}, 
           # North of the Origin
