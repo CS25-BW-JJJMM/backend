@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
-#Room.objects.all().delete()
+Room.objects.all().delete()
           # Origin 
 
 rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 0, "s" : 0, "e" : 0, "w" : 0,
           "description" : "This is the Origin, You may Travel North, West, East, Or South."}, 
-          # North of the Origin
+        
          {"id" : 1, "x" : 0, "y" : 1, "Title" : "Hallway North One", "n" : 1, "s" : 0, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 1 Unit."},
          {"id" : 2, "x" : 0, "y" : 2, "Title" : "Hallway North Two", "n" : 2, "s" : 0, "e" : 0, "w" : 0,
@@ -92,22 +92,24 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 0, "s" : 0, "e" 
           "description" : "This is just West of the Origin by 10 Units."},
 ]
 for r in rooms:
-  n = r['n'] if 'n' in r else -1
-  s = r['s'] if 's' in r else -1
-  e = r['e'] if 'e' in r else -1
-  w = r['w'] if 'w' in r else -1
+  n_to = r['n'] if 'n' in r else -1
+  s_to = r['s'] if 's' in r else -1
+  e_to = r['e'] if 'e' in r else -1
+  w_to = r['w'] if 'w' in r else -1
   if 'x' in r: x = r['x']
   if 'y' in r: y = r['y']
   make_room = Room(id=r["id"], 
-                   title=r["title"], 
+                   title=r["Title"], 
                    description=r["description"], 
                    x=x, 
                    y=y, 
-                   n=n, 
-                   s=s, 
-                   e=e, 
-                   w=w)
+                   n_to=n_to , 
+                   s_to=s_to, 
+                   e_to=e_to, 
+                   w_to=w_to)
+  
   make_room.save()
+
 players=Player.objects.all()
 for p in players:
   p.currentRoom=rooms[0]["id"]
