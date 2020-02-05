@@ -16,7 +16,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just North of the Origin by 3 Units."},
          {"id" : 4, "x" : 0, "y" : 4, "Title" : "Hallway North Four", "n" : 5, "s" : 3, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 4 Units."},
-         {"id" : 5, "x" : 0, "y" : 5, "Title" : "Hallway North Five", "n" : 6, "s" : 4, "e" : 0, "w" : 0,
+         {"id" : 5, "x" : 0, "y" : 5, "Title" : "Hallway North Five", "n" : 6, "s" : 4, "e" : 116, "w" : 0,
           "description" : "This is just North of the Origin by 5 Units."},
          {"id" : 6, "x" : 0, "y" : 6, "Title" : "Hallway North Six", "n" : 7, "s" : 5, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 6 Units."},
@@ -26,7 +26,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just North of the Origin by 8 Units."},
          {"id" : 9, "x" : 0, "y" : 9, "Title" : "Hallway North Nine", "n" : 9, "s" : 8, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 9 Units."},
-         {"id" : 10, "x" : 0, "y" : 10, "Title" : "Hallway North Ten", "n" : 41, "s" : 9, "e" : 0, "w" : 0,
+         {"id" : 10, "x" : 0, "y" : 10, "Title" : "Hallway North Ten", "n" : 41, "s" : 9, "e" : 117, "w" : 0,
           "description" : "This is just North of the Origin by 10 Units."},
           # South of the Origin
          {"id" : 11, "x" : 0, "y" : -1, "Title" : "Hallway South One", "n" : 0, "s" : 12, "e" : 0, "w" : 0,
@@ -123,11 +123,11 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
          {"id" : 55, "x" : 0, "y" : 25, "Title" : "Hallway North TwentyFive", "n" : 0, "s" : 54, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 25 Units."},
           # South of the Origin
-         {"id" : 56, "x" : 0, "y" : -11, "Title" : "Hallway South Eleven", "n" : 20, "s" : 57, "e" : 0, "w" : 0,
+         {"id" : 56, "x" : 0, "y" : -11, "Title" : "Hallway South Eleven", "n" : 20, "s" : 57, "e" : 0, "w" : 86,
           "description" : "This is just South of the Origin by 11 Unit."},
          {"id" : 57, "x" : 0, "y" : -12, "Title" : "Hallway South Twelve", "n" : 56, "s" : 58, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 12 Units."},
-         {"id" : 58, "x" : 0, "y" : -13, "Title" : "Hallway South Thirteen", "n" : 57, "s" : 59, "e" : 0, "w" : 0,
+         {"id" : 58, "x" : 0, "y" : -13, "Title" : "Hallway South Thirteen", "n" : 57, "s" : 59, "e" : 0, "w" : 88,
           "description" : "This is just South of the Origin by 13 Units."},
          {"id" : 59, "x" : 0, "y" : -14, "Title" : "Hallway South Fourteen", "n" : 58, "s" : 60, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 14 Units."},
@@ -135,7 +135,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just South of the Origin by 15 Units."},
          {"id" : 61, "x" : 0, "y" : -16, "Title" : "Hallway South Sixteen", "n" : 60, "s" : 62, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 16 Units."},
-         {"id" : 62, "x" : 0, "y" : -17, "Title" : "Hallway South Seventeen", "n" : 61, "s" : 63, "e" : 0, "w" : 0,
+         {"id" : 62, "x" : 0, "y" : -17, "Title" : "Hallway South Seventeen", "n" : 61, "s" : 63, "e" : 0, "w" : 92,
           "description" : "This is just South of the Origin by 17 Units."},
          {"id" : 63, "x" : 0, "y" : -18, "Title" : "Hallway South Eightteen", "n" : 62, "s" : 64, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 18 Units."},
@@ -147,7 +147,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just South of the Origin by 21 Units."},
          {"id" : 67, "x" : 0, "y" : -22, "Title" : "Hallway South TwentyTwo", "n" : 66, "s" : 68, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 22 Units."},
-         {"id" : 68, "x" : 0, "y" : -23, "Title" : "Hallway South TwentyThree", "n" : 67, "s" : 69, "e" : 0, "w" : 0,
+         {"id" : 68, "x" : 0, "y" : -23, "Title" : "Hallway South TwentyThree", "n" : 67, "s" : 69, "e" : 0, "w" : 98,
           "description" : "This is just South of the Origin by 23 Units."},
          {"id" : 69, "x" : 0, "y" : -24, "Title" : "Hallway South TwentyFour", "n" : 68, "s" : 70, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 24 Units."},
@@ -160,11 +160,11 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just East of the Origin by 12 Units."},
          {"id" : 73, "x" : -13, "y" : 0, "Title" : "Hallway East Thirteen", "n" : 0, "s" : 0, "e" : 74, "w" : 72,
           "description" : "This is just East of the Origin by 13 Units."},
-         {"id" : 74, "x" : -14, "y" : 0, "Title" : "Hallway East Fourteen", "n" : 0, "s" : 0, "e" : 75, "w" : 73,
+         {"id" : 74, "x" : -14, "y" : 0, "Title" : "Hallway East Fourteen", "n" : 0, "s" : 113, "e" : 75, "w" : 73,
           "description" : "This is just East of the Origin by 14 Units."},
          {"id" : 75, "x" : -15, "y" : 0, "Title" : "Hallway East Fifteen", "n" : 0, "s" : 0, "e" : 76, "w" : 74,
           "description" : "This is just East of the Origin by 15 Units."},
-         {"id" : 76, "x" : -16, "y" : 0, "Title" : "Hallway East Sixteen", "n" : 0, "s" : 0, "e" : 77, "w" : 75,
+         {"id" : 76, "x" : -16, "y" : 0, "Title" : "Hallway East Sixteen", "n" : 0, "s" : 112, "e" : 77, "w" : 75,
           "description" : "This is just East of the Origin by 16 Units."},
          {"id" : 77, "x" : -17, "y" : 0, "Title" : "Hallway East Seventeen", "n" : 0, "s" : 0, "e" : 78, "w" : 76,
           "description" : "This is just East of the Origin by 17 Units."},
@@ -178,18 +178,18 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just East of the Origin by 21 Units."},
          {"id" : 82, "x" : -22, "y" : 0, "Title" : "Hallway East TwentyTwo", "n" : 0, "s" : 0, "e" : 83, "w" : 81,
           "description" : "This is just East of the Origin by 22 Units."},
-         {"id" : 83, "x" : -23, "y" : 0, "Title" : "Hallway East TwentyThree", "n" : 0, "s" : 0, "e" : 84, "w" : 82,
+         {"id" : 83, "x" : -23, "y" : 0, "Title" : "Hallway East TwentyThree", "n" : 0, "s" : 115, "e" : 84, "w" : 82,
           "description" : "This is just East of the Origin by 23 Units."},
          {"id" : 84, "x" : -24, "y" : 0, "Title" : "Hallway East TwentyFour", "n" : 0, "s" : 0, "e" : 85, "w" : 83,
           "description" : "This is just East of the Origin by 24 Units."},
          {"id" : 85, "x" : -25, "y" : 0, "Title" : "Hallway East TwentyFive", "n" : 0, "s" : 0, "e" : 0, "w" : 84,
           "description" : "This is just East of the Origin by 25 Units."},
           # West of the Origin
-         {"id" : 86, "x" : 11, "y" : 0, "Title" : "Hallway West Eleven", "n" : 0, "s" : 0, "e" : 40, "w" : 87,
+         {"id" : 86, "x" : 11, "y" : 0, "Title" : "Hallway West Eleven", "n" : 0, "s" : 56, "e" : 40, "w" : 87,
           "description" : "This is just West of the Origin by 11 Unit."},
          {"id" : 87, "x" : 12, "y" : 0, "Title" : "Hallway West Twelve", "n" : 0, "s" : 0, "e" : 85, "w" : 88,
           "description" : "This is just West of the Origin by 12 Units."},
-         {"id" : 88, "x" : 13, "y" : 0, "Title" : "Hallway West Thirteen", "n" : 0, "s" : 0, "e" : 86, "w" : 89,
+         {"id" : 88, "x" : 13, "y" : 0, "Title" : "Hallway West Thirteen", "n" : 0, "s" : 58, "e" : 86, "w" : 89,
           "description" : "This is just West of the Origin by 13 Units."},
          {"id" : 89, "x" : 14, "y" : 0, "Title" : "Hallway West Fourteen", "n" : 0, "s" : 0, "e" : 87, "w" : 90,
           "description" : "This is just West of the Origin by 14 Units."},
@@ -197,7 +197,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just West of the Origin by 15 Units."},
          {"id" : 91, "x" : 16, "y" : 0, "Title" : "Hallway West Sixteen", "n" : 0, "s" : 0, "e" : 90, "w" : 92,
           "description" : "This is just West of the Origin by 16 Units."},
-         {"id" : 92, "x" : 17, "y" : 0, "Title" : "Hallway West Seventeen", "n" : 0, "s" : 0, "e" : 91, "w" : 93,
+         {"id" : 92, "x" : 17, "y" : 0, "Title" : "Hallway West Seventeen", "n" : 0, "s" : 62, "e" : 91, "w" : 93,
           "description" : "This is just West of the Origin by 17 Units."},
          {"id" : 93, "x" : 18, "y" : 0, "Title" : "Hallway West Eightteen", "n" : 0, "s" : 0, "e" : 92, "w" : 94,
           "description" : "This is just West of the Origin by 18 Units."},
@@ -209,12 +209,78 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just West of the Origin by 21 Units."},
          {"id" : 97, "x" : 22, "y" : 0, "Title" : "Hallway West TwentyTwo", "n" : 0, "s" : 0, "e" : 96, "w" : 98,
           "description" : "This is just West of the Origin by 22 Units."},
-         {"id" : 98, "x" : 23, "y" : 0, "Title" : "Hallway West TwentyThree", "n" : 0, "s" : 0, "e" : 97, "w" : 99,
+         {"id" : 98, "x" : 23, "y" : 0, "Title" : "Hallway West TwentyThree", "n" : 0, "s" : 68, "e" : 97, "w" : 99,
           "description" : "This is just West of the Origin by 23 Units."},
          {"id" : 99, "x" : 24, "y" : 0, "Title" : "Hallway West TwentyFour", "n" : 0, "s" : 0, "e" : 98, "w" : 100,
           "description" : "This is just West of the Origin by 24 Units."},
          {"id" : 100, "x" : 25, "y" : 0, "Title" : "Hallway West TwentyFive", "n" : 0, "s" : 0, "e" : 99, "w" : 0,
           "description" : "This is just West of the Origin by 25 Units."},
+
+          # North West Wing
+          {"id" : 101, "x" : 25, "y" : 1, "Title" : "NorthWest Labyrinth", "n" : 69699, "s" : 100, "e" : 102, "w" : 420420420,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 102, "x" : 24, "y" : 2, "Title" : "NorthWest Labyrinth", "n" : 103, "s" : 69696969, "e" : 696969, "w" : 101,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 103, "x" : 24, "y" : 3, "Title" : "NorthWest Labyrinth", "n" : 696969, "s" : 102, "e" : 104, "w" : 696969,
+          "description" : "TYou have entered the labrinth..."},
+
+          {"id" : 104, "x" : 23, "y" : 2, "Title" : "NorthWest Labyrinth", "n" : 105, "s" : 69696969, "e" : 696969, "w" : 103,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 105, "x" : 23, "y" : 3, "Title" : "NorthWest Labyrinth", "n" : 696969, "s" : 104, "e" : 106, "w" : 696969,
+          "description" : "You have entered the labrinth...."},
+
+          {"id" : 106, "x" : 23, "y" : 2, "Title" : "NorthWest Labyrinth", "n" : 107, "s" : 69696969, "e" : 696969, "w" : 105,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 107, "x" : 23, "y" : 3, "Title" : "NorthWest Labyrinth", "n" : 696969, "s" : 106, "e" : 108, "w" : 696969,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 108, "x" : 23, "y" : 2, "Title" : "NorthWest Labyrinth", "n" : 109, "s" : 69696969, "e" : 696969, "w" : 107,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 109, "x" : 23, "y" : 3, "Title" : "NorthWest Labyrinth", "n" : 696969, "s" : 108, "e" : 110, "w" : 696969,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 110, "x" : 23, "y" : 2, "Title" : "NorthWest Labyrinth", "n" : 111, "s" : 69696969, "e" : 696969, "w" : 109,
+          "description" : "You have entered the labrinth..."},
+
+          {"id" : 111, "x" : 23, "y" : 3, "Title" : "NorthWest Labyrinth", "n" : 696969, "s" : 110, "e" : 55, "w" : 696969,
+          "description" : "You have entered the labrinth..."},
+
+          
+          # Lambda Quadrant(South East)
+          {"id" : 112, "x" : 23, "y" : 3, "Title" : "Lambda Quadrant", "n" : 76, "s" : 696969, "e" : 115, "w" : 113,
+          "description" : "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
+
+          {"id" : 113, "x" : 23, "y" : 3, "Title" : "Lambda Quadrant", "n" : 74, "s" : 114, "e" : 112, "w" : 696969,
+          "description" : "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
+
+          {"id" : 114, "x" : 23, "y" : 3, "Title" : "Lambda Quadrant", "n" : 696969, "s" : 696969, "e" : 115, "w" : 113,
+          "description" : "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
+
+          {"id" : 115, "x" : 23, "y" : 3, "Title" : "Lambda Quadrant", "n" : 112, "s" : 114, "e" : 696969, "w" : 696969,
+          "description" : "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
+
+
+          # Zig Zag Maze North East 
+          {"id" : 116, "x" : 23, "y" : 3, "Title" : "Zig Zag Maze", "n" : 5, "s" : 76, "e" : 696969, "w" : 0,
+          "description" : "Lots of Zigging and Zagging is happening all around you."},
+
+          {"id" : 117, "x" : 23, "y" : 3, "Title" : "Zig Zag Maze", "n" : 10, "s" : 74, "e" : 696969, "w" : 5,
+          "description" : "Lots of Zigging and Zagging is happening all around you."},
+
+
+          # Secret Rooms 
+
+          
+
+
+
+
+
 
 ]
 
