@@ -217,59 +217,59 @@ rooms = [{"id": 0, "x": 0, "y": 0, "Title": "Origin", "n": 1, "s": 11, "e": 21, 
           "description": "This is just West of the Origin by 25 Units."},
 
          # North West Wing
-         {"id": 101, "x": 25, "y": 1, "Title": "NorthWest Labyrinth", "n": -1, "s": 100, "e": 102, "w": -1,
+         {"id": 101, "x":-25, "y": 1, "Title": "NorthWest Labyrinth", "n": -1, "s": 100, "e": 102, "w": -1,
           "description": "You have entered the labrinth..."},
 
-         {"id": 102, "x": 24, "y": 2, "Title": "NorthWest Labyrinth", "n": 103, "s": -1, "e": -1, "w": 101,
+         {"id": 102, "x": -24, "y":1, "Title": "NorthWest Labyrinth", "n": 103, "s": -1, "e": -1, "w": 101,
           "description": "You have entered the labrinth..."},
 
-         {"id": 103, "x": 24, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 102, "e": 104, "w": -1,
+         {"id": 103, "x": -24, "y": 2, "Title": "NorthWest Labyrinth", "n": -1, "s": 102, "e": 104, "w": -1,
           "description": "TYou have entered the labrinth..."},
 
-         {"id": 104, "x": 23, "y": 2, "Title": "NorthWest Labyrinth", "n": 105, "s": -1, "e": -1, "w": 103,
+         {"id": 104, "x": -23, "y": 2, "Title": "NorthWest Labyrinth", "n": 105, "s": -1, "e": -1, "w": 103,
           "description": "You have entered the labrinth..."},
 
-         {"id": 105, "x": 23, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 104, "e": 106, "w": -1,
+         {"id": 105, "x": -23, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 104, "e": 106, "w": -1,
           "description": "You have entered the labrinth...."},
 
-         {"id": 106, "x": 23, "y": 2, "Title": "NorthWest Labyrinth", "n": 107, "s": -1, "e": -1, "w": 105,
+         {"id": 106, "x": -22, "y": 3, "Title": "NorthWest Labyrinth", "n": 107, "s": -1, "e": -1, "w": 105,
           "description": "You have entered the labrinth..."},
 
-         {"id": 107, "x": 23, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 106, "e": 108, "w": -1,
+         {"id": 107, "x": -22, "y": 4, "Title": "NorthWest Labyrinth", "n": -1, "s": 106, "e": 108, "w": -1,
           "description": "You have entered the labrinth..."},
 
-         {"id": 108, "x": 23, "y": 2, "Title": "NorthWest Labyrinth", "n": 109, "s": -1, "e": -1, "w": 107,
+         {"id": 108, "x": -21, "y": 4, "Title": "NorthWest Labyrinth", "n": 109, "s": -1, "e": -1, "w": 107,
           "description": "You have entered the labrinth..."},
 
-         {"id": 109, "x": 23, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 108, "e": 110, "w": -1,
+         {"id": 109, "x": -21, "y": 5, "Title": "NorthWest Labyrinth", "n": -1, "s": 108, "e": 110, "w": -1,
           "description": "You have entered the labrinth..."},
 
-         {"id": 110, "x": 23, "y": 2, "Title": "NorthWest Labyrinth", "n": 111, "s": -1, "e": -1, "w": 109,
+         {"id": 110, "x": -20, "y": 5, "Title": "NorthWest Labyrinth", "n": 111, "s": -1, "e": -1, "w": 109,
           "description": "You have entered the labrinth..."},
 
-         {"id": 111, "x": 23, "y": 3, "Title": "NorthWest Labyrinth", "n": -1, "s": 110, "e": 55, "w": -1,
+         {"id": 111, "x": -20, "y": 6, "Title": "NorthWest Labyrinth", "n": -1, "s": 110, "e": 55, "w": -1,
           "description": "You have entered the labrinth..."},
 
 
          # Lambda Quadrant(South East)
-         {"id": 112, "x": 23, "y": 3, "Title": "Lambda Quadrant", "n": 76, "s": -1, "e": 115, "w": 113,
+         {"id": 112, "x": 15, "y": -5, "Title": "Lambda Quadrant", "n": 76, "s": -1, "e": 115, "w": 113,
           "description": "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
 
-         {"id": 113, "x": 23, "y": 3, "Title": "Lambda Quadrant", "n": 74, "s": 114, "e": 112, "w": -1,
+         {"id": 113, "x": 15, "y": -14, "Title": "Lambda Quadrant", "n": 74, "s": 114, "e": 112, "w": -1,
           "description": "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
 
-         {"id": 114, "x": 23, "y": 3, "Title": "Lambda Quadrant", "n": -1, "s": -1, "e": 115, "w": 113,
+         {"id": 114, "x": 23, "y": -22, "Title": "Lambda Quadrant", "n": -1, "s": -1, "e": 115, "w": 113,
           "description": "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
 
-         {"id": 115, "x": 23, "y": 3, "Title": "Lambda Quadrant", "n": 112, "s": 114, "e": -1, "w": -1,
+         {"id": 115, "x": 20, "y": -14, "Title": "Lambda Quadrant", "n": 112, "s": 114, "e": -1, "w": -1,
           "description": "You have reached the land of Firehose Pace Learning, Peer Programming, and Airtables."},
 
 
          # Zig Zag Maze North East
-         {"id": 116, "x": 23, "y": 3, "Title": "Zig Zag Maze", "n": 5, "s": 76, "e": -1, "w": -1,
+         {"id": 116, "x": 25, "y": 5, "Title": "Zig Zag Maze", "n": 5, "s": 76, "e": -1, "w": -1,
           "description": "Lots of Zigging and Zagging is happening all around you."},
 
-         {"id": 117, "x": 23, "y": 3, "Title": "Zig Zag Maze", "n": 10, "s": 74, "e": -1, "w": 5,
+         {"id": 117, "x": 25, "y": 10, "Title": "Zig Zag Maze", "n": 10, "s": 74, "e": -1, "w": 5,
           "description": "Lots of Zigging and Zagging is happening all around you."},
 
 
