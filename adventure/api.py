@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from pusher import Pusher
+# from pusher import Pusher
 from django.http import JsonResponse
 from decouple import config
 from django.contrib.auth.models import User
@@ -8,16 +8,15 @@ from .models import *
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import serializers,viewsets
+from rest_framework import serializers, viewsets
 from rest_framework.decorators import api_view
 import json
 from dotenv import load_dotenv
 import os
 
 
-
 # instantiate pusher
-pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
+# pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
 @csrf_exempt
 @api_view(["GET"])
@@ -29,14 +28,14 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'name': player.user.username, 'title': room.title, 'description': room.description, 'players': players}, safe=True)
 
 
 # @csrf_exempt
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def move(request):
-    dirs={"n": "north", "s": "south", "e": "east", "w": "west"}
+    dirs = {"n": "north", "s": "south", "e": "east", "w": "west"}
     reverse_dirs = {"n": "south", "s": "north", "e": "west", "w": "east"}
     player = request.user.player
     player_id = player.id
@@ -56,26 +55,26 @@ def move(request):
         nextRoomID = room.w_to
     if nextRoomID is not None and nextRoomID >= 0:
         nextRoom = Room.objects.get(id=nextRoomID)
-        player.currentRoom=nextRoomID
+        player.currentRoom = nextRoomID
         player.save()
         players = nextRoom.playerNames(player_id)
         currentPlayerUUIDs = room.playerUUIDs(player_id)
         nextPlayerUUIDs = nextRoom.playerUUIDs(player_id)
-        for p_uuid in currentPlayerUUIDs:
-            pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
-        for p_uuid in nextPlayerUUIDs:
-            pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
-        return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'players':players, 'error_msg':""}, safe=True)
+        # for p_uuid in currentPlayerUUIDs:
+        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
+        # for p_uuid in nextPlayerUUIDs:
+        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
+        return JsonResponse({'name': player.user.username, 'title': nextRoom.title, 'description': nextRoom.description, 'room_id': nextRoom.id, 'players': players, 'error_msg': ""}, safe=True)
     else:
         players = room.playerNames(player_id)
-        return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'error_msg':"You cannot move that way."}, safe=True)
+        return JsonResponse({'name': player.user.username, 'title': room.title, 'description': room.description, 'room_id': nextRoom.id, 'players': players, 'error_msg': "You cannot move that way."}, safe=True)
 
 
 @csrf_exempt
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def say(request):
-  #Implement
+  # Implement
     player = request.user.player
     player_id = player.id
     room = player.room()
@@ -84,15 +83,18 @@ def say(request):
     currUsers = room.playerNames(player_id)
     currPlayerIDs = room.playerUUIDs(player_id)
     for p_id in currPlayerIDs:
-        pusher.trigger(f'p-channel-{p_id}', u'broadcast', {'message': f'{player.user.username} says to you {message}'})
-    return JsonResponse({'name':player.user.username,'title':room.title, 'description':room.description, 'players':currUsers}, safe=True)
+        pusher.trigger(f'p-channel-{p_id}', u'broadcast',
+                       {'message': f'{player.user.username} says to you {message}'})
+    return JsonResponse({'name': player.user.username, 'title': room.title, 'description': room.description, 'players': currUsers}, safe=True)
 
-  
+
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Room
-        fields = ('id','title','description',"x","y","n_to","s_to","e_to","w_to","monsters")
-    def create(self,validate_data):
+        fields = ('id', 'title', 'description', "x", "y",
+                  "n_to", "s_to", "e_to", "w_to", "monsters")
+
+    def create(self, validate_data):
         user = self.context['request'].user
         rooms = Room.objects.create(**validate_data)
         return rooms
@@ -101,10 +103,12 @@ class RoomSerializer(serializers.HyperlinkedModelSerializer):
 class RoomViewSet(viewsets.ModelViewSet):
 
     serializer_class = RoomSerializer
-    queryset= Room.objects.none()
+    queryset = Room.objects.none()
 
     def get_queryset(self):
-       return Room.objects.all()
+        return Room.objects.all()
+
+
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def shout(request):
@@ -116,9 +120,10 @@ def shout(request):
     player = request.user.player
     player_id = player.id
     players = Player.objects.all()
-    currentPlayerUUIDs =  [p.uuid for p in players if p.id != player_id]
+    currentPlayerUUIDs = [p.uuid for p in players if p.id != player_id]
     for p_uuid in currentPlayerUUIDs:
-        pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} shouts: {msg}.'})
+        pusher.trigger(f'p-channel-{p_uuid}', u'broadcast',
+                       {'message': f'{player.user.username} shouts: {msg}.'})
     return JsonResponse({'username': player.user.username, 'message': f'You shout: {msg}'}, safe=True)
 
 # @csrf_exempt
@@ -134,9 +139,10 @@ def pm(request):
     player_id = player.id
     target_username = data['username']
     try:
-        target_player = User.objects.get(username = target_username)
+        target_player = User.objects.get(username=target_username)
         target_uuid = target_player.player.uuid
-        pusher.trigger(f'p-channel-{target_uuid}', u'broadcast', {'message':f'{player.user.username} whispers: {msg}.'})
+        pusher.trigger(f'p-channel-{target_uuid}', u'broadcast',
+                       {'message': f'{player.user.username} whispers: {msg}.'})
         return JsonResponse({'target_username': target_username, 'message': f'You whisper {target_username}: {msg}'}, safe=True)
     except User.DoesNotExist:
         return JsonResponse({'error_msg': 'This user does not exist'}, safe=True)
@@ -151,13 +157,13 @@ def whois(request):
     data = json.loads(request.body)
     username = data['username']
     try:
-        user = User.objects.get(username = username)
+        user = User.objects.get(username=username)
         player = user.player
         message = f'{username} is currently in {player.room().title}'
         return JsonResponse({'message': message}, safe=True)
     except User.DoesNotExist:
         return JsonResponse({'error_msg': 'This user does not exist'}, safe=True)
-    
+
 # @csrf_exempt
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
@@ -176,7 +182,8 @@ def look(request):
     user = request.user
     player = user.player
     room = player.room()
-    return JsonResponse({'items':f'{room.items}'})
+    return JsonResponse({'items': f'{room.items}'})
+
 
 @csrf_exempt
 @api_view(["POST"])
@@ -202,9 +209,10 @@ def pickup(request):
             room.items = updated_items
         player.save()
         room.save()
-        return JsonResponse({'items':f'you picked up {rsp[1]}'})
+        return JsonResponse({'items': f'you picked up {rsp[1]}'})
 
-    return JsonResponse({'items':f'no item by that name nearby'})
+    return JsonResponse({'items': f'no item by that name nearby'})
+
 
 @csrf_exempt
 @api_view(["POST"])
@@ -231,8 +239,9 @@ def drop(request):
             player.items = updated_items_p
         player.save()
         room.save()
-        return JsonResponse({'items':f'you dropped {rsp[1]}'})
-    return JsonResponse({'items':f"you don't have that item to drop"})
+        return JsonResponse({'items': f'you dropped {rsp[1]}'})
+    return JsonResponse({'items': f"you don't have that item to drop"})
+
 
 @csrf_exempt
 @api_view(["POST"])
@@ -243,4 +252,4 @@ def inv(request):
     items = player.items
     if player.items == '':
         items = 'inventory is empty'
-    return JsonResponse({'items':f'{items}'})
+    return JsonResponse({'items': f'{items}'})
