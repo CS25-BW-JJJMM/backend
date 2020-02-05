@@ -52,7 +52,7 @@ def move(request):
         nextRoomID = room.e_to
     elif direction == "w":
         nextRoomID = room.w_to
-    if nextRoomID is not None and nextRoomID > 0:
+    if nextRoomID is not None and nextRoomID >= 0:
         nextRoom = Room.objects.get(id=nextRoomID)
         player.currentRoom=nextRoomID
         player.save()
@@ -83,13 +83,13 @@ def say(request):
     currPlayerIDs = room.playerUUIDs(player_id)
     for p_id in currPlayerIDs:
         pusher.trigger(f'p-channel-{p_id}', u'broadcast', {'message': f'{player.user.username} says to you {message}'})
-    return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':currUsers}, safe=True)
+    return JsonResponse({'name':player.user.username,'title':room.title, 'description':room.description, 'players':currUsers}, safe=True)
 
   
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Room
-        fields = ('title','description',"x","y","n_to","s_to","e_to","w_to")
+        fields = ('id','title','description',"x","y","n_to","s_to","e_to","w_to")
     def create(self,validate_data):
         user = self.context['request'].user
         rooms = Room.objects.create(**validate_data)
