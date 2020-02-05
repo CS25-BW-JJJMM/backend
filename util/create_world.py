@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
-Room.objects.all().delete()
+
           # Origin 
 
 rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e" : 21, "w" : 31,

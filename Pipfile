@@ -21,7 +21,7 @@ graphene-django = "*"
 graphene = "*"
 pip = "*"
 python-dotenv = "*"
-templateview = "*"
+
 
 [dev-packages]
 
