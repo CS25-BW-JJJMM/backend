@@ -1,9 +1,13 @@
 from django.db import models
+import random
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
+
+
+
 
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
@@ -53,6 +57,32 @@ class Player(models.Model):
     def room(self):
         try:
             return Room.objects.get(id=self.currentRoom)
+        except Room.DoesNotExist:
+            self.initialize()
+            
+            return self.room()
+class Monster(models.Model):
+    name = models.CharField(max_length=60,default="DEFAULT NAME")
+    description = models.CharField(max_length=500,default="DEFAULT DESCRIPTION")
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    room = Room.objects.get(id=random.randint(0,100))
+    current_room = None
+    def initialize(self):
+        if self.current_room == None:
+            self.name = name
+            self.description = description
+            self.current_room = room
+            self.save()
+        else:
+            return self.spawn()
+
+    def spawn(self):
+        
+            current_room = random.randint(0,100)
+            return current_room
+    def room(self):
+        try:
+            return Room.objects.get(id=self.current_room)
         except Room.DoesNotExist:
             self.initialize()
             
