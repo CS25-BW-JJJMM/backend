@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
 Room.objects.all().delete()
+
           # Origin 
 
 rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e" : 21, "w" : 31,
@@ -216,6 +217,10 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just West of the Origin by 25 Units."},
 
 ]
+
+
+
+  
 for r in rooms:
   n_to = r['n'] if 'n' in r else -1
   s_to = r['s'] if 's' in r else -1
@@ -226,6 +231,7 @@ for r in rooms:
   make_room = Room(id=r["id"], 
                    title=r["Title"], 
                    description=r["description"], 
+                
                    x=x, 
                    y=y, 
                    n_to=n_to , 

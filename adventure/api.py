@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 import os
 
 
+
 # instantiate pusher
 pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
@@ -43,6 +44,7 @@ def move(request):
     data = json.loads(request.body)
     direction = data['direction']
     room = player.room()
+
     nextRoomID = None
     if direction == "n":
         nextRoomID = room.n_to
@@ -89,7 +91,7 @@ def say(request):
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Room
-        fields = ('id','title','description',"x","y","n_to","s_to","e_to","w_to")
+        fields = ('id','title','description',"x","y","n_to","s_to","e_to","w_to","monsters")
     def create(self,validate_data):
         user = self.context['request'].user
         rooms = Room.objects.create(**validate_data)
