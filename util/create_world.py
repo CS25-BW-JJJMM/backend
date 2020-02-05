@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
 Room.objects.all().delete()
+
           # Origin 
 
 rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e" : 21, "w" : 31,
@@ -119,7 +120,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just North of the Origin by 23 Units."},
          {"id" : 54, "x" : 0, "y" : 24, "Title" : "Hallway North TwentyFour", "n" : 55, "s" : 53, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 24 Units."},
-         {"id" : 55, "x" : 0, "y" : 25, "Title" : "Hallway North TwentyFive", "n" : Null, "s" : 54, "e" : 0, "w" : 0,
+         {"id" : 55, "x" : 0, "y" : 25, "Title" : "Hallway North TwentyFive", "n" : 0, "s" : 54, "e" : 0, "w" : 0,
           "description" : "This is just North of the Origin by 25 Units."},
           # South of the Origin
          {"id" : 56, "x" : 0, "y" : -11, "Title" : "Hallway South Eleven", "n" : 20, "s" : 57, "e" : 0, "w" : 0,
@@ -150,7 +151,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just South of the Origin by 23 Units."},
          {"id" : 69, "x" : 0, "y" : -24, "Title" : "Hallway South TwentyFour", "n" : 68, "s" : 70, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 24 Units."},
-         {"id" : 70, "x" : 0, "y" : -25, "Title" : "Hallway South TwentyFive", "n" : 69, "s" : Null, "e" : 0, "w" : 0,
+         {"id" : 70, "x" : 0, "y" : -25, "Title" : "Hallway South TwentyFive", "n" : 69, "s" : 0, "e" : 0, "w" : 0,
           "description" : "This is just South of the Origin by 25 Units."},
           # East of the Origin
          {"id" : 71, "x" : -11, "y" : 0, "Title" : "Hallway East Eleven", "n" : 0, "s" : 0, "e" : 72, "w" : 30,
@@ -181,7 +182,7 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just East of the Origin by 23 Units."},
          {"id" : 84, "x" : -24, "y" : 0, "Title" : "Hallway East TwentyFour", "n" : 0, "s" : 0, "e" : 85, "w" : 83,
           "description" : "This is just East of the Origin by 24 Units."},
-         {"id" : 85, "x" : -25, "y" : 0, "Title" : "Hallway East TwentyFive", "n" : 0, "s" : 0, "e" : Null, "w" : 84,
+         {"id" : 85, "x" : -25, "y" : 0, "Title" : "Hallway East TwentyFive", "n" : 0, "s" : 0, "e" : 0, "w" : 84,
           "description" : "This is just East of the Origin by 25 Units."},
           # West of the Origin
          {"id" : 86, "x" : 11, "y" : 0, "Title" : "Hallway West Eleven", "n" : 0, "s" : 0, "e" : 40, "w" : 87,
@@ -212,10 +213,14 @@ rooms = [{"id" : 0, "x" : 0, "y" : 0, "Title" : "Origin", "n" : 1, "s" : 11, "e"
           "description" : "This is just West of the Origin by 23 Units."},
          {"id" : 99, "x" : 24, "y" : 0, "Title" : "Hallway West TwentyFour", "n" : 0, "s" : 0, "e" : 98, "w" : 100,
           "description" : "This is just West of the Origin by 24 Units."},
-         {"id" : 100, "x" : 25, "y" : 0, "Title" : "Hallway West TwentyFive", "n" : 0, "s" : 0, "e" : 99, "w" : Null,
+         {"id" : 100, "x" : 25, "y" : 0, "Title" : "Hallway West TwentyFive", "n" : 0, "s" : 0, "e" : 99, "w" : 0,
           "description" : "This is just West of the Origin by 25 Units."},
 
 ]
+
+
+
+  
 for r in rooms:
   n_to = r['n'] if 'n' in r else -1
   s_to = r['s'] if 's' in r else -1
@@ -226,6 +231,7 @@ for r in rooms:
   make_room = Room(id=r["id"], 
                    title=r["Title"], 
                    description=r["description"], 
+                
                    x=x, 
                    y=y, 
                    n_to=n_to , 

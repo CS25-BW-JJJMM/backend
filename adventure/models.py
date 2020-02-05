@@ -1,9 +1,13 @@
 from django.db import models
+from random import seed , randint
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
+
+
+
 
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
@@ -15,6 +19,7 @@ class Room(models.Model):
     e_to = models.IntegerField(default=0)
     w_to = models.IntegerField(default=0)
     items = models.CharField(max_length=100, default="DEFAULT TITLE")
+    monsters = models.IntegerField(default=0)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
         try:
@@ -57,6 +62,35 @@ class Player(models.Model):
             self.initialize()
             
             return self.room()
+class Monster(models.Model):
+    name = models.CharField(max_length=60,default="DEFAULT NAME")
+    description = models.CharField(max_length=500,default="DEFAULT DESCRIPTION")
+    currentRoom = models.IntegerField(default=0)
+    def rand():
+        for _ in range(1):
+            value = randint(0,100)
+        print(value)
+
+    def initialize(self):
+        if self.currentRoom != 101:
+            self.name = name
+            self.description = description
+            self.currentRoom = Monster.rand()
+            self.save()
+        
+        self.save()
+    def spawn(self):
+        if currentRoom != 101:
+                currentRoom = Monster.rand()
+                return currentRoom
+    def room(self):
+        try:
+            return Room.objects.get(id=self.currentRoom)
+        except Room.DoesNotExist:
+            self.initialize()
+            
+            return self.room()
+            self.save()
     
 
 @receiver(post_save, sender=User)
@@ -71,5 +105,14 @@ def save_user_player(sender, instance, **kwargs):
 
 
 
+def rand():
+    for __ in range(1):
+        value = randint(0,100)
+    print(value)
 
+    
+
+    
+   
+    
 

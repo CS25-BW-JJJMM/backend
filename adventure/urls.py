@@ -13,5 +13,6 @@ urlpatterns = [
     url('pickup', api.pickup),
     url('drop', api.drop),
     url('inv', api.inv),
+    
     re_path(r'^api-token-auth/', views.obtain_auth_token)
 ]
