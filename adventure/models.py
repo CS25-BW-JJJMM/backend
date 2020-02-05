@@ -65,27 +65,27 @@ class Player(models.Model):
 class Monster(models.Model):
     name = models.CharField(max_length=60,default="DEFAULT NAME")
     description = models.CharField(max_length=500,default="DEFAULT DESCRIPTION")
-    current_room = models.IntegerField(default=0)
+    currentRoom = models.IntegerField(default=0)
     def rand():
         for _ in range(1):
             value = randint(0,100)
         print(value)
 
     def initialize(self):
-        if self.current_room != 101:
+        if self.currentRoom != 101:
             self.name = name
             self.description = description
-            self.current_room = Monster.rand()
+            self.currentRoom = Monster.rand()
             self.save()
         
         self.save()
     def spawn(self):
-        if current_room != 101:
-                current_room = Monster.rand()
-                return current_room
+        if currentRoom != 101:
+                currentRoom = Monster.rand()
+                return currentRoom
     def room(self):
         try:
-            return Room.objects.get(id=self.current_room)
+            return Room.objects.get(id=self.currentRoom)
         except Room.DoesNotExist:
             self.initialize()
             
@@ -106,7 +106,7 @@ def save_user_player(sender, instance, **kwargs):
 
 
 def rand():
-    for _ in range(1):
+    for __ in range(1):
         value = randint(0,100)
     print(value)
 
