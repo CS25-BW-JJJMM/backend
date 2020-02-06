@@ -28,7 +28,7 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name': player.user.username, 'title': room.title, 'description': room.description, 'players': players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'name': player.user.username, 'title': room.title, 'description': room.description, 'players': players, "room_id": room.id}, safe=True)
 
 
 # @csrf_exempt
@@ -67,7 +67,7 @@ def move(request):
         return JsonResponse({'name': player.user.username, 'title': nextRoom.title, 'description': nextRoom.description, 'room_id': nextRoom.id, 'players': players, 'error_msg': ""}, safe=True)
     else:
         players = room.playerNames(player_id)
-        return JsonResponse({'name': player.user.username, 'title': room.title, 'description': room.description, 'room_id': nextRoom.id, 'players': players, 'error_msg': "You cannot move that way."}, safe=True)
+        return JsonResponse({'name': player.user.username, 'title': room.title, 'description': room.description, 'room_id': room.id, 'players': players, 'error_msg': "You cannot move that way."}, safe=True)
 
 
 @csrf_exempt
