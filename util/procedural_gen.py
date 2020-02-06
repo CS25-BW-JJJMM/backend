@@ -4,15 +4,58 @@ import random
 
 Room.objects.all().delete()
 
-num_room = 100
+population = ["crowded", "normal", "deserted"]
+
+ambiance = ["bright", "dim", "normal", "grimy", "sterile"]
+
+funct = ["card room", "hallway", "tunnel", "kitchen", "bar", "pool room"]
+
+description_beginners = ["You find yourself in ",
+                         "You have stumbled upon ", "You walk into "]
+
+pop_desc = {
+    "crowded": "Around you is a sea of bustling orcs and goblins.",
+    "normal": "A few goblins are milling about.",
+    "deserted": "The place looks deserted."
+}
+
+ambiance_desc = {
+    "bright": "The glare of the torch light is almost too much for your eyes to bear.",
+    "dim": "You can barely make out any shapes in the dim light.",
+    "normal": "Things look fine here.",
+    "grimy": "Everything has a fine layer of dust and filth upon it.",
+    "sterile": "The walls and floor are spotless."
+}
+
+functional_desc = {
+    "card room": "An orc holding a deck of cards looks up and smiles as you enter.",
+    "hallway": "Just a hallway, not much to do but walk on.",
+    "tunnel": "Water drips from the ceiling onto the muddy floor.",
+    "kitchen": "An awful stench fills your nose.  Probably just roast halfling.",
+    "bar": "The smell of stale grog makes your stomach turn.",
+    "pool room": "The felt on the pool tables is faded and splattered with dark stains."
+}
+
+
+def room_generator(id):
+    room_population = random.choice(population)
+    room_ambiance = random.choice(ambiance)
+    room_function = random.choice(funct)
+    room_desc_begin = random.choice(description_beginners)
+    title = f"{room_population.capitalize()} {room_function}"
+    description = f"{room_desc_begin} a {room_population} {room_function}. {pop_desc[room_population]} {ambiance_desc[room_ambiance]} {functional_desc[room_function]}"
+    return Room(id=id, title=title, description=description)
+
+
+num_room = 150
 height = 20
 width = 20
 
 rooms = []
 
 for id in range(num_room):
-    rooms.append(
-        Room(id=id, title=f"test_room {id}", description="I'm a test room"))
+    random_room = room_generator(id)
+    rooms.append(random_room)
 
 # for room in rooms:
 #     room.save()
@@ -83,11 +126,14 @@ while len(rooms) > 0:
     new_room = rooms.pop()
     # if stepper is <= 0, change direction, and reset stepper
     if stepper <= 0:
-        stepper = random.randint(1, 5)
+        stepper = random.randint(1, 3)
         cur_dir = popomatic()
     # while there is a room in cur_dir
     next_coord = move_coord(cur_dir, current_coord)
-    # TODO Almost there, just have to figure out how to avoid the key error
+    # determine if within bounds, change direction if not
+    # while (0 > next_coord[0] or next_coord[0] > width) or (0 > next_coord[1] or next_coord[1] > height):
+    #     cur_dir = popomatic()
+    #     next_coord = move_coord(cur_dir, next_coord)
     while hashable(next_coord) in world:
         # if there is, move to it, connect the rooms
         last_room = world[hashable(current_coord)]
