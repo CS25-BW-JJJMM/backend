@@ -14,8 +14,8 @@ for id in range(num_room):
     rooms.append(
         Room(id=id, title=f"test_room {id}", description="I'm a test room"))
 
-for room in rooms:
-    room.save()
+# for room in rooms:
+#     room.save()
 
 opposite = {
     "n": "s",
@@ -52,24 +52,31 @@ def move_coord(dir, coord_list):
         return [coord_list[0], coord_list[1] - 1]
 
 
+def hashable(list):
+    hashableCoord = (list[0], list[1])
+    return hashableCoord
+
+
 # grab the first room
-current_room = rooms.pop()
+new_room = rooms.pop()
 # mark this room as the origin point
-origin = current_room
+origin = new_room
 # find middle of nested list
 current_coord = [height // 2, width // 2]
 # record position of room in dict
-world[(current_coord[0], current_coord[1])] = current_room
+world[hashable(current_coord)] = new_room
 # set room coordinates
-current_room.x = current_coord[1]
-current_room.y = current_coord[0]
+new_room.x = current_coord[1]
+new_room.y = current_coord[0]
+# save room to database
+new_room.save()
 # set current moving direction
 cur_dir = popomatic()
 stepper = random.randint(1, 5)
 # move coordinates
-current_coord = move_coord(cur_dir, current_coord)
+# current_coord = move_coord(cur_dir, current_coord)
 print(current_coord)
-last_room = current_room
+last_room = new_room
 
 while len(rooms) > 0:
     # get the next room
@@ -80,27 +87,35 @@ while len(rooms) > 0:
         cur_dir = popomatic()
     # while there is a room in cur_dir
     next_coord = move_coord(cur_dir, current_coord)
-    # TODO This seems to be the issue! Gotta figure out how to avoid the key error
-    if world[(next_coord[0], next_coord[1])] is not None:
-        last_room = world[(current_coord[0], current_coord[1])]
-        while world[current_coord]:
-            # if there is, move to it, connect the rooms
-            last_room = world[current_coord]
-            curr_room = world[next_coord]
-            last_room.connectRooms(curr_room, cur_dir)
-            curr_room.connectRooms(last_room, opposite[cur_dir])
-            # continue until there is no existing room at curr_coord
-            current_coord = next_coord
-            next_coord = move_coord(cur_dir, current_coord)
+    # TODO Almost there, just have to figure out how to avoid the key error
+    while hashable(next_coord) in world:
+        # if there is, move to it, connect the rooms
+        last_room = world[hashable(current_coord)]
+        curr_room = world[hashable(next_coord)]
+        last_room.connectRooms(curr_room, cur_dir)
+        curr_room.connectRooms(last_room, opposite[cur_dir])
+        # save the room
+        # last_room.save()
+        # curr_room.save()
+        # continue until there is no existing room at curr_coord
+        current_coord = next_coord
+        next_coord = move_coord(cur_dir, next_coord)
     # set new room in empty spot
-    world[(next_coord[0], next_coord[1])] = new_room
+    world[hashable(next_coord)] = new_room
     new_room.x = next_coord[1]
     new_room.y = next_coord[0]
+    new_room.save()
+    last_room.connectRooms(new_room, cur_dir)
+    new_room.connectRooms(last_room, opposite[cur_dir])
     last_room = new_room
+    curr_room = new_room
     current_coord = next_coord
+    stepper -= 1
 
 
 players = Player.objects.all()
 for p in players:
     p.currentRoom = origin.id
     p.save()
+
+print(world)
