@@ -86,9 +86,9 @@ def popomatic():
 
 def move_coord(dir, coord_list):
     if dir == "n":
-        return [coord_list[0] - 1, coord_list[1]]
-    elif dir == "s":
         return [coord_list[0] + 1, coord_list[1]]
+    elif dir == "s":
+        return [coord_list[0] - 1, coord_list[1]]
     elif dir == "e":
         return [coord_list[0], coord_list[1] + 1]
     else:
