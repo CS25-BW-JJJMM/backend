@@ -11,6 +11,7 @@ from django.views.generic import TemplateView
 @csrf_exempt
 @api_view(['POST'])
 def register(request):
+    print(request)
     data = json.loads(request.body)
     username = data['username']
     password1 = data['password1']
@@ -36,6 +37,7 @@ def register(request):
 @csrf_exempt
 @api_view(['POST'])
 def login(request):
+    print(request)
     data = json.loads(request.body)
     username = data['username']
     password = data['password']
