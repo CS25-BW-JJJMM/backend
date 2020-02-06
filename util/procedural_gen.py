@@ -146,6 +146,7 @@ while len(rooms) > 0:
         # continue until there is no existing room at curr_coord
         current_coord = next_coord
         next_coord = move_coord(cur_dir, next_coord)
+        last_room = curr_room
     # set new room in empty spot
     world[hashable(next_coord)] = new_room
     new_room.x = next_coord[1]
