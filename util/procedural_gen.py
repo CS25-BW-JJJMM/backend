@@ -131,9 +131,9 @@ while len(rooms) > 0:
     # while there is a room in cur_dir
     next_coord = move_coord(cur_dir, current_coord)
     # determine if within bounds, change direction if not
-    # while (0 > next_coord[0] or next_coord[0] > width) or (0 > next_coord[1] or next_coord[1] > height):
-    #     cur_dir = popomatic()
-    #     next_coord = move_coord(cur_dir, next_coord)
+    while (0 > next_coord[0] or next_coord[0] > width) or (0 > next_coord[1] or next_coord[1] > height):
+        cur_dir = popomatic()
+        next_coord = move_coord(cur_dir, next_coord)
     while hashable(next_coord) in world:
         # if there is, move to it, connect the rooms
         last_room = world[hashable(current_coord)]
