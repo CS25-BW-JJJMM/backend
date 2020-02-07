@@ -55,44 +55,24 @@ casino = {}
 def get_room(x, y): return casion.get((x, y), null_room)
 
 
-# The maximum size of the grid. Generation will start in the middle.
-# 17x9 generates a roughly visually square grid in my console, but you can make this anything you want.
 maxx, maxy = 17, 9
 
-# === Random Generation and Room Handling === #
 
-# Picks a random room with the given connections.
 
 
 def random_room(*connections, only=False):
     if only:
-        l = list(filter(
-            lambda r: has_connections(r, *connections) and set(get_connections(r)) == set(*connections), room_templates))
+        l = list(filter(lambda r: has_connections(r, *connections) and set(get_connections(r)) == set(*connections), room_templates))
         return l[0] if len(l) > 0 else null_room
     else:
         return random.choice(list(filter(lambda r: has_connections(r, *connections), room_templates)))
 
-# Returns true if the given room has all the given connections.
-
-
-def has_connections(room):
-    return all(room[c] == corridor for c in connections)
-
-# Returns a list of connections for the given room.
-
-
-def get_connections(room, ideal=False):
-    return [c for c in directions if has_connections(room, c)]
-
-# Returns a list of connections the given room should have from context.
-
-
+    def has_connections(room):
+        return all(room[c] == corridor for c in connections)
+    def get_connections(room, ideal=False):
+        return [c for c in directions if has_connections(room, c)]
 def get_connections_ideal(x, y):
     return [dir for dir in directions if has_connections(get_room(*offset[dir](x, y)), opposite[dir])]
-
-# Generates a random dungeon by recursively generating a room at each coordinate.
-
-
 def gen_room(x, y, first=True):
     if x not in range(maxx) or y not in range(maxy):
         return
@@ -104,44 +84,34 @@ def gen_room(x, y, first=True):
     else:
         connections = get_connections_ideal(x, y)
         if len(connections) < 1:
-            return False
-        print("Generating room at "+str((x, y))+"...")
-        dungeon[(x, y)] = random_room(*connections)
-
-    gen_room(*offset[dir](x, y), False)
+            return False        print("Generating room at "+str((x, y))+"...")
+dungeon[(x, y)] = random_room(*connections)
+gen_room(*offset[dir](x, y), False)
     for dir in get_connections(dungeon[x, y]):
         return True
-
-# Entry point for dungeon generation. Also performs cleanup of unwanted dead ends and prints the output.
-
-
 def gen_dungeon():
-    print("Beginning dungeon generation...")
-    gen_room(int(math.floor(maxx/2)), int(math.floor(maxy/2)))
-
-    print("All connections exhausted.")
-    print("Beginning cleanup of unwanted dead ends...")
-    for x in range(maxx):
-        for y in range(maxy):
-            dungeon[(x, y)] = random_room(*get_connections_ideal(x, y), only=True)
+print("Beginning dungeon generation...")
+gen_room(int(math.floor(maxx/2)), int(math.floor(maxy/2)))
+print("All connections exhausted.")
+print("Beginning cleanup of unwanted dead ends...")
+for x in range(maxx):
+    for y in range(maxy):
+        dungeon[(x, y)] = random_room(*get_connections_ideal(x, y), only=True)
 print("Finished!")
-
 print_grid()
 
-# === Console Output === #
 
-# Prints a row of rooms from the given grid.
 
 
 def print_row(y):
     [[print("|", end=""), [print(get_room(x, y)[part], end="|")
-                           for x in range(maxx)], print("")] for part in room_parts]
+    for x in range(maxx)], print("")] for part in room_parts]
 def print_grid():
-    print("----"*maxx+"-")
-    [[print_row(y), print("----"*maxx+"-")] for y in range(maxy)]
+print("----"*maxx+"-")
+[[print_row(y), print("----"*maxx+"-")] for y in range(maxy)]
 
 
-# === Main Function === #
+
 if __name__ == "__main__":
     gen_dungeon(rooms)
     print_grid()
@@ -155,18 +125,7 @@ for r in rooms:
         x = r['x']
     if 'y' in r:
         y = r['y']
-    gen_room = Room(id=r["id"],
-                     title = r["Title"],
-                     description = r["description"],
-
-                     x = x,
-                     y = y,
-                     n_to = n_to,
-                     s_to = s_to,
-                     e_to = e_to,
-                     w_to = w_to)
-    make_room.save()
-
+gen_room =Room(id=r["id"],title = r["Title"],description = r["description"],x = x,y = y, n_to = n_to,s_to = s_to,e_to = e_to,w_to = w_to)        make_room.save()
 players=Player.objects.all()
 for p in players:
     p.currentRoom=rooms[0]["id"]

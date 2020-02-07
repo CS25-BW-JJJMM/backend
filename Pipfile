@@ -21,6 +21,7 @@ graphene-django = "*"
 graphene = "*"
 pip = "*"
 python-dotenv = "*"
+djoser = "*"
 
 [dev-packages]
 pylint = "*"

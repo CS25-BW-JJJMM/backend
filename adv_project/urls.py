@@ -15,7 +15,7 @@ router.register(r'rooms', RoomViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
- #   path('api/chat/' ,include(router.urls)),
+    path('api/chat/' ,include(router.urls)),
     path('api/rooms/', include(router.urls)),
     path('api/adv/', include('adventure.urls')),
     re_path(r'^api-token-auth/', views.obtain_auth_token),
